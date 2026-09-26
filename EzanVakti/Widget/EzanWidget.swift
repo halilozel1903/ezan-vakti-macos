@@ -9,11 +9,41 @@ struct PrayerEntry: TimelineEntry {
 struct PrayerProvider: TimelineProvider {
     func placeholder(in context: Context) -> PrayerEntry { PrayerEntry(date: .now, snapshot: nil) }
     func getSnapshot(in context: Context, completion: @escaping (PrayerEntry) -> Void) {
-        completion(PrayerEntry(date: .now, snapshot: SharedSnapshot.load()))
+        Task {
+            let now = Date()
+            let snapshot = context.isPreview ? SharedSnapshot.load() : await resolvedSnapshot(at: now)
+            completion(PrayerEntry(date: now, snapshot: snapshot))
+        }
     }
     func getTimeline(in context: Context, completion: @escaping (Timeline<PrayerEntry>) -> Void) {
-        let now = Date()
-        let snapshot = SharedSnapshot.load()
+        Task {
+            let now = Date()
+            let snapshot = await resolvedSnapshot(at: now)
+            completion(makeTimeline(snapshot: snapshot, now: now))
+        }
+    }
+
+    private func resolvedSnapshot(at now: Date) async -> PrayerSnapshot? {
+        let cached = SharedSnapshot.load()
+        let hasUpcomingDays = cached?.day(for: now) != nil && cached?.day(for: IstanbulClock.nextDay(now)) != nil
+        let freshEnough = cached.map { now.timeIntervalSince($0.fetchedAt) < 12 * 60 * 60 } ?? false
+        if hasUpcomingDays && freshEnough { return cached }
+        do {
+            let updated = try await PrayerService().fetch(
+                district: cached?.district ?? "Fatih",
+                latitude: cached?.latitude ?? 41.0082,
+                longitude: cached?.longitude ?? 28.9784,
+                now: now
+            )
+            SharedSnapshot.save(updated)
+            return updated
+        } catch {
+            // Keep a usable cached schedule when a refresh is unavailable.
+            return hasUpcomingDays ? cached : nil
+        }
+    }
+
+    private func makeTimeline(snapshot: PrayerSnapshot?, now: Date) -> Timeline<PrayerEntry> {
         var dates = [now]
         if let snapshot {
             for day in snapshot.days {
@@ -25,7 +55,8 @@ struct PrayerProvider: TimelineProvider {
             }
         }
         let entries = dates.sorted().map { PrayerEntry(date: $0, snapshot: snapshot) }
-        completion(Timeline(entries: entries, policy: .after(now.addingTimeInterval(6 * 3600))))
+        let retryInterval: TimeInterval = snapshot == nil ? 10 * 60 : 6 * 60 * 60
+        return Timeline(entries: entries, policy: .after(now.addingTimeInterval(retryInterval)))
     }
 }
 
@@ -71,7 +102,7 @@ struct EzanWidgetView: View {
         } else {
             VStack(alignment: .leading, spacing: 10) {
                 Label("Ezan Vakti", systemImage: "moon.stars.fill").font(.headline)
-                Text("Vakitleri görmek için uygulamayı açın.").font(.caption)
+                Text("Vakitler yüklenemedi. İnternet bağlantını kontrol et.").font(.caption)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
             .containerBackground(for: .widget) { Color(red: 0.04, green: 0.12, blue: 0.19) }

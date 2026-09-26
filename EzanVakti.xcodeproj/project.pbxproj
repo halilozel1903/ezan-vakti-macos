@@ -16,6 +16,7 @@
 		7F7ED73F2EE13F3C5FDDC264 /* EzanVaktiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F9798626B3F48804CF2C49 /* EzanVaktiApp.swift */; };
 		B9A9C68D69F972952E51441C /* EzanWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A206A3AEBFBD8C293C2651 /* EzanWidget.swift */; };
 		CD770670BE5F7CA17A0D7B04 /* EzanWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5E0D0E3858E5575339B88937 /* EzanWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F7720AFD4C35BA1F0DE22B50 /* PrayerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0955ACF85CBA91F26F27AA80 /* PrayerService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -231,6 +232,7 @@
 			files = (
 				B9A9C68D69F972952E51441C /* EzanWidget.swift in Sources */,
 				2B71E1E256FBF96086CD0D0E /* PrayerModels.swift in Sources */,
+				F7720AFD4C35BA1F0DE22B50 /* PrayerService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

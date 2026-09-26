@@ -28,8 +28,6 @@ targets:
     sources:
       - path: EzanVakti/Widget
       - path: EzanVakti/Shared
-        excludes:
-          - PrayerService.swift
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.halilozel.EzanVakti.Widget
