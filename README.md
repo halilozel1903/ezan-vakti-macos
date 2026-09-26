@@ -12,6 +12,8 @@ A native Turkish prayer times app for the macOS menu bar, with small and medium 
 
 Unzip `EzanVakti-macOS.zip`, then open `EzanVakti.app`. The app appears in the menu bar as a moon with the next prayer and minutes remaining. Click it to see the full schedule and choose a district. In macOS, add the **Ezan Vakti** widget from the desktop or Notification Center widget gallery after opening the app once.
 
+When updating from an earlier build, quit older copies of Ezan Vakti before opening the new app. Running two copies with the same bundle identifier can leave macOS using the older widget extension. Remove and re-add the widget if it still shows the earlier version.
+
 The included app is locally signed for development, not notarized for public distribution. macOS may require you to use **Open** from the Finder context menu on another Mac. For reliable widget data sharing across machines, build and sign both targets with your own Apple development team and enable the App Groups capability for `group.com.halilozel.EzanVakti`.
 
 ## Build from source
@@ -36,7 +38,7 @@ xcodebuild -project EzanVakti.xcodeproj -scheme EzanVakti \
 
 Times come from the [AlAdhan calendar API](https://aladhan.com/prayer-times-api), using calculation method 13, labeled **Diyanet İşleri Başkanlığı, Turkey (experimental)** by that service. These are calculated times and should not be described as the official Diyanet timetable. The [official Diyanet API](https://awqatsalah.diyanet.gov.tr/) requires registration and authenticated access.
 
-The app sends the selected district's coordinates, or your current coordinates after you grant location permission, to AlAdhan to retrieve the calendar. Apple's geocoder resolves district names. The downloaded current and next month are cached locally and shared with the widget. There are no analytics or account requirements. When offline, previously downloaded times remain available. The app refreshes cached times after 12 hours when it runs.
+The app sends the selected district's coordinates, or your current coordinates after you grant location permission, to AlAdhan to retrieve the calendar. Apple's geocoder resolves district names. The downloaded current and next month are cached locally and shared with the widget. If the widget cannot read a cached schedule, it downloads Fatih times itself so it does not remain empty. There are no analytics or account requirements. When offline, previously downloaded times remain available. The app and widget refresh cached times after 12 hours when running.
 
 ## Project layout
 
