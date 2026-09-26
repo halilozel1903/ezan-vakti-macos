@@ -1,0 +1,540 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2B71E1E256FBF96086CD0D0E /* PrayerModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D69FE89E459BF91D3C99D23 /* PrayerModels.swift */; };
+		3748F5FB6FE9760A94414DB9 /* PrayerScheduleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45372664A58987939CD1E78C /* PrayerScheduleTests.swift */; };
+		4BF58A4DB88C0D32D1965B4A /* PrayerStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAA4EB8805D5E5727872991 /* PrayerStore.swift */; };
+		58682DAC7B7D5B2300656F19 /* PrayerModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D69FE89E459BF91D3C99D23 /* PrayerModels.swift */; };
+		736543B563D9FE1BD6942BA8 /* PrayerPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44254BD95CE56ED132A3C77F /* PrayerPanel.swift */; };
+		73D8116293C50F7E3CFE592E /* PrayerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0955ACF85CBA91F26F27AA80 /* PrayerService.swift */; };
+		7F7ED73F2EE13F3C5FDDC264 /* EzanVaktiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F9798626B3F48804CF2C49 /* EzanVaktiApp.swift */; };
+		B9A9C68D69F972952E51441C /* EzanWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A206A3AEBFBD8C293C2651 /* EzanWidget.swift */; };
+		CD770670BE5F7CA17A0D7B04 /* EzanWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5E0D0E3858E5575339B88937 /* EzanWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1555F39B8AE5700C8A3ECB5E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8E74D9C79CFB7C3FD1343A77 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2AF9C27DC82DBFF6514AB4A8;
+			remoteInfo = EzanVakti;
+		};
+		FA0FFB3F9C5530E089EFC4D8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8E74D9C79CFB7C3FD1343A77 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C3AF216931814248CFF976DF;
+			remoteInfo = EzanWidget;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		27EAD3FC3BAFDD42AE6ABE3F /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				CD770670BE5F7CA17A0D7B04 /* EzanWidget.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		0955ACF85CBA91F26F27AA80 /* PrayerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerService.swift; sourceTree = "<group>"; };
+		44254BD95CE56ED132A3C77F /* PrayerPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerPanel.swift; sourceTree = "<group>"; };
+		45372664A58987939CD1E78C /* PrayerScheduleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerScheduleTests.swift; sourceTree = "<group>"; };
+		5E0D0E3858E5575339B88937 /* EzanWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = EzanWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		68F9798626B3F48804CF2C49 /* EzanVaktiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EzanVaktiApp.swift; sourceTree = "<group>"; };
+		6FAA4EB8805D5E5727872991 /* PrayerStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerStore.swift; sourceTree = "<group>"; };
+		7D69FE89E459BF91D3C99D23 /* PrayerModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerModels.swift; sourceTree = "<group>"; };
+		B1A206A3AEBFBD8C293C2651 /* EzanWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EzanWidget.swift; sourceTree = "<group>"; };
+		D2A148B3B314CEEB1DE0FC77 /* EzanVakti.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EzanVakti.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD53B49423E804C246CC6BD1 /* EzanVaktiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EzanVaktiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		125E855850150205B74140D0 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				45372664A58987939CD1E78C /* PrayerScheduleTests.swift */,
+			);
+			name = Tests;
+			path = EzanVakti/Tests;
+			sourceTree = "<group>";
+		};
+		3F51664A4F45E2F55576F9F2 = {
+			isa = PBXGroup;
+			children = (
+				4936CD17E9157D477C2A5BBC /* App */,
+				8CA6DE341F605AD1F2C4EACF /* Shared */,
+				125E855850150205B74140D0 /* Tests */,
+				BB2405CC49EFD4FC9BA2FCED /* Widget */,
+				DA67CC9DBEB959FB5A5AC9B7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4936CD17E9157D477C2A5BBC /* App */ = {
+			isa = PBXGroup;
+			children = (
+				68F9798626B3F48804CF2C49 /* EzanVaktiApp.swift */,
+				44254BD95CE56ED132A3C77F /* PrayerPanel.swift */,
+				6FAA4EB8805D5E5727872991 /* PrayerStore.swift */,
+			);
+			name = App;
+			path = EzanVakti/App;
+			sourceTree = "<group>";
+		};
+		8CA6DE341F605AD1F2C4EACF /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				7D69FE89E459BF91D3C99D23 /* PrayerModels.swift */,
+				0955ACF85CBA91F26F27AA80 /* PrayerService.swift */,
+			);
+			name = Shared;
+			path = EzanVakti/Shared;
+			sourceTree = "<group>";
+		};
+		BB2405CC49EFD4FC9BA2FCED /* Widget */ = {
+			isa = PBXGroup;
+			children = (
+				B1A206A3AEBFBD8C293C2651 /* EzanWidget.swift */,
+			);
+			name = Widget;
+			path = EzanVakti/Widget;
+			sourceTree = "<group>";
+		};
+		DA67CC9DBEB959FB5A5AC9B7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D2A148B3B314CEEB1DE0FC77 /* EzanVakti.app */,
+				FD53B49423E804C246CC6BD1 /* EzanVaktiTests.xctest */,
+				5E0D0E3858E5575339B88937 /* EzanWidget.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2AF9C27DC82DBFF6514AB4A8 /* EzanVakti */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 39F9857B20558D09F6C856C4 /* Build configuration list for PBXNativeTarget "EzanVakti" */;
+			buildPhases = (
+				2E5D70D8C55EBDD26A35B3D2 /* Sources */,
+				27EAD3FC3BAFDD42AE6ABE3F /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				17FB04F442B07F93334820DF /* PBXTargetDependency */,
+			);
+			name = EzanVakti;
+			packageProductDependencies = (
+			);
+			productName = EzanVakti;
+			productReference = D2A148B3B314CEEB1DE0FC77 /* EzanVakti.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6D5A4223769A7116C271D297 /* EzanVaktiTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 404DA06263F810F25834857A /* Build configuration list for PBXNativeTarget "EzanVaktiTests" */;
+			buildPhases = (
+				7C8BD014F46AAF1391BEA491 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9D85F1EB169D6B4D8E19D31F /* PBXTargetDependency */,
+			);
+			name = EzanVaktiTests;
+			packageProductDependencies = (
+			);
+			productName = EzanVaktiTests;
+			productReference = FD53B49423E804C246CC6BD1 /* EzanVaktiTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C3AF216931814248CFF976DF /* EzanWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 129D427D31CF53B35CA170D4 /* Build configuration list for PBXNativeTarget "EzanWidget" */;
+			buildPhases = (
+				29678BFE999481917251E162 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EzanWidget;
+			packageProductDependencies = (
+			);
+			productName = EzanWidget;
+			productReference = 5E0D0E3858E5575339B88937 /* EzanWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8E74D9C79CFB7C3FD1343A77 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					2AF9C27DC82DBFF6514AB4A8 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+					6D5A4223769A7116C271D297 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+					C3AF216931814248CFF976DF = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = AB61DB5902EE815AA788587D /* Build configuration list for PBXProject "EzanVakti" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 3F51664A4F45E2F55576F9F2;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = DA67CC9DBEB959FB5A5AC9B7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2AF9C27DC82DBFF6514AB4A8 /* EzanVakti */,
+				C3AF216931814248CFF976DF /* EzanWidget */,
+				6D5A4223769A7116C271D297 /* EzanVaktiTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		29678BFE999481917251E162 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B9A9C68D69F972952E51441C /* EzanWidget.swift in Sources */,
+				2B71E1E256FBF96086CD0D0E /* PrayerModels.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2E5D70D8C55EBDD26A35B3D2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7F7ED73F2EE13F3C5FDDC264 /* EzanVaktiApp.swift in Sources */,
+				58682DAC7B7D5B2300656F19 /* PrayerModels.swift in Sources */,
+				736543B563D9FE1BD6942BA8 /* PrayerPanel.swift in Sources */,
+				73D8116293C50F7E3CFE592E /* PrayerService.swift in Sources */,
+				4BF58A4DB88C0D32D1965B4A /* PrayerStore.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7C8BD014F46AAF1391BEA491 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3748F5FB6FE9760A94414DB9 /* PrayerScheduleTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		17FB04F442B07F93334820DF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C3AF216931814248CFF976DF /* EzanWidget */;
+			targetProxy = FA0FFB3F9C5530E089EFC4D8 /* PBXContainerItemProxy */;
+		};
+		9D85F1EB169D6B4D8E19D31F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2AF9C27DC82DBFF6514AB4A8 /* EzanVakti */;
+			targetProxy = 1555F39B8AE5700C8A3ECB5E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0F45EAE9779DDC18B20D5718 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = EzanVakti/Resources/App.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "EzanVakti/Resources/App-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.halilozel.EzanVakti;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		2F17066930A9DC45582D2FE9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = EzanVakti/Resources/Widget.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "EzanVakti/Resources/Widget-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.halilozel.EzanVakti.Widget;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		40B73886467ED13B0FB3EBA3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.halilozel.EzanVaktiTests;
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EzanVakti.app/Contents/MacOS/EzanVakti";
+			};
+			name = Release;
+		};
+		4F882558E3B217AD05CEB4B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		50049122F6FB2EA24F16852C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.halilozel.EzanVaktiTests;
+				SDKROOT = macosx;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EzanVakti.app/Contents/MacOS/EzanVakti";
+			};
+			name = Debug;
+		};
+		A479123BF39348A2DDC151E6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = EzanVakti/Resources/App.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "EzanVakti/Resources/App-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.halilozel.EzanVakti;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		C06622DE4390B6F024875BB9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		EA5E9799C481334BFCC7A108 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = EzanVakti/Resources/Widget.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = "EzanVakti/Resources/Widget-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.halilozel.EzanVakti.Widget;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		129D427D31CF53B35CA170D4 /* Build configuration list for PBXNativeTarget "EzanWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA5E9799C481334BFCC7A108 /* Debug */,
+				2F17066930A9DC45582D2FE9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		39F9857B20558D09F6C856C4 /* Build configuration list for PBXNativeTarget "EzanVakti" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0F45EAE9779DDC18B20D5718 /* Debug */,
+				A479123BF39348A2DDC151E6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		404DA06263F810F25834857A /* Build configuration list for PBXNativeTarget "EzanVaktiTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50049122F6FB2EA24F16852C /* Debug */,
+				40B73886467ED13B0FB3EBA3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		AB61DB5902EE815AA788587D /* Build configuration list for PBXProject "EzanVakti" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C06622DE4390B6F024875BB9 /* Debug */,
+				4F882558E3B217AD05CEB4B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8E74D9C79CFB7C3FD1343A77 /* Project object */;
+}

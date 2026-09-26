@@ -1,0 +1,5 @@
+.DS_Store
+work/
+outputs/
+*.xcuserstate
+xcuserdata/

@@ -1,0 +1,48 @@
+name: EzanVakti
+options:
+  bundleIdPrefix: com.halilozel
+settings:
+  base:
+    MACOSX_DEPLOYMENT_TARGET: '14.0'
+    SWIFT_VERSION: '5.0'
+    CODE_SIGN_STYLE: Automatic
+    DEVELOPMENT_TEAM: ''
+targets:
+  EzanVakti:
+    type: application
+    platform: macOS
+    sources:
+      - path: EzanVakti/App
+      - path: EzanVakti/Shared
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.halilozel.EzanVakti
+        INFOPLIST_FILE: EzanVakti/Resources/App-Info.plist
+        CODE_SIGN_ENTITLEMENTS: EzanVakti/Resources/App.entitlements
+        GENERATE_INFOPLIST_FILE: NO
+    dependencies:
+      - target: EzanWidget
+  EzanWidget:
+    type: app-extension
+    platform: macOS
+    sources:
+      - path: EzanVakti/Widget
+      - path: EzanVakti/Shared
+        excludes:
+          - PrayerService.swift
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.halilozel.EzanVakti.Widget
+        INFOPLIST_FILE: EzanVakti/Resources/Widget-Info.plist
+        CODE_SIGN_ENTITLEMENTS: EzanVakti/Resources/Widget.entitlements
+        GENERATE_INFOPLIST_FILE: NO
+  EzanVaktiTests:
+    type: bundle.unit-test
+    platform: macOS
+    sources:
+      - path: EzanVakti/Tests
+    dependencies:
+      - target: EzanVakti
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
