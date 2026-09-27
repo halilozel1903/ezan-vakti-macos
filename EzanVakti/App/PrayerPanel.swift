@@ -2,10 +2,10 @@ import SwiftUI
 import AppKit
 
 private enum Palette {
-    static let navy = Color(red: 0.035, green: 0.105, blue: 0.17)
-    static let deep = Color(red: 0.055, green: 0.17, blue: 0.22)
-    static let gold = Color(red: 0.92, green: 0.73, blue: 0.43)
-    static let muted = Color(red: 0.65, green: 0.76, blue: 0.77)
+    static let navy = Color(red: 0.10, green: 0.13, blue: 0.18)
+    static let deep = Color(red: 0.19, green: 0.21, blue: 0.27)
+    static let gold = Color(red: 1, green: 0.48, blue: 0.09)
+    static let muted = Color(red: 0.72, green: 0.74, blue: 0.78)
 }
 
 struct PrayerPanel: View {
@@ -54,7 +54,7 @@ struct PrayerPanel: View {
             } label: {
                 HStack(spacing: 5) {
                     Image(systemName: "location.fill").font(.system(size: 10))
-                    Text(store.snapshot?.district ?? "Fatih").lineLimit(1)
+                    Text(store.snapshot?.district ?? DefaultLocation.district).lineLimit(1)
                     Image(systemName: "chevron.down").font(.system(size: 9, weight: .bold))
                 }
                 .font(.system(size: 12, weight: .semibold))
@@ -175,7 +175,7 @@ struct PrayerPanel: View {
         VStack(spacing: 12) {
             Text("İlçeni seç").font(.system(size: 25, weight: .semibold, design: .rounded))
                 .frame(maxWidth: .infinity, alignment: .leading)
-            Text("İstanbul’un 39 ilçesinden birini seç veya konumuna izin ver.")
+            Text("İstanbul’un 39 ilçesinden birini seç veya konumuna izin ver. Bulunamazsa Avcılar gösterilir.")
                 .font(.system(size: 12)).foregroundStyle(Palette.muted).frame(maxWidth: .infinity, alignment: .leading)
             Button { store.location.request() } label: {
                 Label("Konumumu kullan", systemImage: "location.north.fill")
