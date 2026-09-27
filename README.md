@@ -1,6 +1,6 @@
 # Ezan Vakti for macOS
 
-A native Turkish prayer times app for the macOS menu bar, with small and medium desktop widgets. It shows the current prayer period, the next prayer, a live countdown, and all six daily times. Choose any of Istanbul's 39 districts or grant location permission to use your current position within Istanbul.
+A native Turkish prayer times app for the macOS menu bar, with small, medium, and large desktop widgets. It shows the current prayer period, the next prayer, a live countdown, and all six daily times. Choose any of Istanbul's 39 districts or grant location permission to use your current position within Istanbul. Avcılar is the fallback when no location is available.
 
 ## Requirements
 
@@ -10,7 +10,7 @@ A native Turkish prayer times app for the macOS menu bar, with small and medium 
 
 ## Run the packaged app
 
-Unzip `EzanVakti-macOS.zip`, then open `EzanVakti.app`. The app appears in the menu bar as a moon with the next prayer and minutes remaining. Click it to see the full schedule and choose a district. In macOS, add the **Ezan Vakti** widget from the desktop or Notification Center widget gallery after opening the app once.
+Unzip `EzanVakti-macOS.zip`, then open `EzanVakti.app`. The app appears in the menu bar as a moon with the next prayer and minutes remaining. The first launch opens a Turkish location chooser. Click the menu bar item to see the full schedule or change districts. In macOS, add the **Ezan Vakti** widget from the desktop or Notification Center widget gallery after opening the app once. Clicking any widget opens the location chooser.
 
 When updating from an earlier build, quit older copies of Ezan Vakti before opening the new app. Running two copies with the same bundle identifier can leave macOS using the older widget extension. Remove and re-add the widget if it still shows the earlier version.
 
@@ -38,7 +38,7 @@ xcodebuild -project EzanVakti.xcodeproj -scheme EzanVakti \
 
 Times come from the [AlAdhan calendar API](https://aladhan.com/prayer-times-api), using calculation method 13, labeled **Diyanet İşleri Başkanlığı, Turkey (experimental)** by that service. These are calculated times and should not be described as the official Diyanet timetable. The [official Diyanet API](https://awqatsalah.diyanet.gov.tr/) requires registration and authenticated access.
 
-The app sends the selected district's coordinates, or your current coordinates after you grant location permission, to AlAdhan to retrieve the calendar. Apple's geocoder resolves district names. The downloaded current and next month are cached locally and shared with the widget. If the widget cannot read a cached schedule, it downloads Fatih times itself so it does not remain empty. There are no analytics or account requirements. When offline, previously downloaded times remain available. The app and widget refresh cached times after 12 hours when running.
+The app sends the selected district's coordinates, or your current coordinates after you grant location permission, to AlAdhan to retrieve the calendar. Apple's geocoder resolves district names. The downloaded current and next month are cached locally and shared with the widget. If the widget cannot read a cached schedule, it downloads Avcılar times itself so it does not remain empty. There are no analytics or account requirements. When offline, previously downloaded times remain available. The app and widget refresh cached times after 12 hours when running.
 
 ## Project layout
 
