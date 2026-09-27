@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		07EB184CCDE158343F212AB8 /* LocationChoiceWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F697EA4B5468C167F608AA /* LocationChoiceWindow.swift */; };
 		2B71E1E256FBF96086CD0D0E /* PrayerModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D69FE89E459BF91D3C99D23 /* PrayerModels.swift */; };
 		3748F5FB6FE9760A94414DB9 /* PrayerScheduleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45372664A58987939CD1E78C /* PrayerScheduleTests.swift */; };
 		4BF58A4DB88C0D32D1965B4A /* PrayerStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAA4EB8805D5E5727872991 /* PrayerStore.swift */; };
@@ -58,6 +59,7 @@
 		68F9798626B3F48804CF2C49 /* EzanVaktiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EzanVaktiApp.swift; sourceTree = "<group>"; };
 		6FAA4EB8805D5E5727872991 /* PrayerStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerStore.swift; sourceTree = "<group>"; };
 		7D69FE89E459BF91D3C99D23 /* PrayerModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerModels.swift; sourceTree = "<group>"; };
+		83F697EA4B5468C167F608AA /* LocationChoiceWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationChoiceWindow.swift; sourceTree = "<group>"; };
 		B1A206A3AEBFBD8C293C2651 /* EzanWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EzanWidget.swift; sourceTree = "<group>"; };
 		D2A148B3B314CEEB1DE0FC77 /* EzanVakti.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EzanVakti.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD53B49423E804C246CC6BD1 /* EzanVaktiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EzanVaktiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				68F9798626B3F48804CF2C49 /* EzanVaktiApp.swift */,
+				83F697EA4B5468C167F608AA /* LocationChoiceWindow.swift */,
 				44254BD95CE56ED132A3C77F /* PrayerPanel.swift */,
 				6FAA4EB8805D5E5727872991 /* PrayerStore.swift */,
 			);
@@ -241,6 +244,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F7ED73F2EE13F3C5FDDC264 /* EzanVaktiApp.swift in Sources */,
+				07EB184CCDE158343F212AB8 /* LocationChoiceWindow.swift in Sources */,
 				58682DAC7B7D5B2300656F19 /* PrayerModels.swift in Sources */,
 				736543B563D9FE1BD6942BA8 /* PrayerPanel.swift in Sources */,
 				73D8116293C50F7E3CFE592E /* PrayerService.swift in Sources */,

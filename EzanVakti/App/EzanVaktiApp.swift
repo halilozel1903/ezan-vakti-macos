@@ -1,7 +1,8 @@
 import SwiftUI
 
 @main struct EzanVaktiApp: App {
-    @StateObject private var store = PrayerStore()
+    @NSApplicationDelegateAdaptor(EzanVaktiDelegate.self) private var appDelegate
+    @StateObject private var store = PrayerStore.shared
 
     var body: some Scene {
         MenuBarExtra {

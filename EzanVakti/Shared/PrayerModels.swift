@@ -133,6 +133,13 @@ enum SharedSnapshot {
         guard let data = try? JSONEncoder().encode(snapshot) else { return }
         defaults.set(data, forKey: key)
     }
+    static func clear() { defaults.removeObject(forKey: key) }
+}
+
+enum DefaultLocation {
+    static let district = "Avcılar"
+    static let latitude = 40.981196
+    static let longitude = 28.723092
 }
 
 enum IstanbulDistricts {
