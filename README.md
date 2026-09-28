@@ -12,7 +12,7 @@ A native Turkish prayer times app for the macOS menu bar, with small, medium, an
 
 Unzip `EzanVakti-macOS.zip`, then open `EzanVakti.app`. The app appears in the menu bar as a moon with the next prayer and minutes remaining. The first launch opens a Turkish location chooser. Click the menu bar item to see the full schedule or change districts. In macOS, add the **Ezan Vakti** widget from the desktop or Notification Center widget gallery after opening the app once. Clicking any widget opens the location chooser.
 
-When updating from an earlier build, quit older copies of Ezan Vakti before opening the new app. Running two copies with the same bundle identifier can leave macOS using the older widget extension. Remove and re-add the widget if it still shows the earlier version.
+When updating from an earlier build, quit older copies of Ezan Vakti and keep one installed copy, preferably in `~/Applications`. Xcode build products and extracted copies can register competing widget extensions. The widget keeps its original kind so existing desktop widgets can load the new version. If macOS still shows an old rendering, remove that widget, open the new app, then add **Ezan Vakti** again from the widget gallery.
 
 The included app is locally signed for development, not notarized for public distribution. macOS may require you to use **Open** from the Finder context menu on another Mac. For reliable widget data sharing across machines, build and sign both targets with your own Apple development team and enable the App Groups capability for `group.com.halilozel.EzanVakti`.
 

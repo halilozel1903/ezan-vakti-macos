@@ -13,14 +13,9 @@ import WidgetKit
     let location = LocationProvider()
     private let service = PrayerService()
     private let resolver = DistrictResolver()
-    private let selectedKey = "didChooseLocationV1"
 
     init() {
         snapshot = SharedSnapshot.load()
-        if snapshot?.district == "Fatih" && !SharedSnapshot.defaults.bool(forKey: selectedKey) {
-            snapshot = nil
-            SharedSnapshot.clear()
-        }
         location.onLocation = { [weak self] place in
             Task { await self?.useCurrentLocation(place) }
         }
@@ -30,7 +25,7 @@ import WidgetKit
         Task { await refreshIfNeeded() }
     }
 
-    var needsLocationChoice: Bool { !SharedSnapshot.defaults.bool(forKey: selectedKey) }
+    var needsLocationChoice: Bool { !SharedSnapshot.defaults.bool(forKey: SharedSnapshot.selectedKey) }
 
     func refreshIfNeeded() async {
         let now = Date()
@@ -52,13 +47,12 @@ import WidgetKit
         errorMessage = nil
         do {
             if district == DefaultLocation.district {
-                await load(district: district, latitude: DefaultLocation.latitude, longitude: DefaultLocation.longitude)
+                await load(district: district, latitude: DefaultLocation.latitude, longitude: DefaultLocation.longitude, explicitSelection: true)
             } else {
                 let point = try await resolver.coordinate(for: district)
-                await load(district: district, latitude: point.latitude, longitude: point.longitude)
+                await load(district: district, latitude: point.latitude, longitude: point.longitude, explicitSelection: true)
             }
             if errorMessage == nil {
-                SharedSnapshot.defaults.set(true, forKey: selectedKey)
                 showingDistricts = false
             }
         } catch {
@@ -72,9 +66,8 @@ import WidgetKit
         errorMessage = nil
         do {
             let district = try await resolver.district(for: location)
-            await load(district: district, latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+            await load(district: district, latitude: location.coordinate.latitude, longitude: location.coordinate.longitude, explicitSelection: true)
             if errorMessage == nil {
-                SharedSnapshot.defaults.set(true, forKey: selectedKey)
                 showingDistricts = false
             }
         } catch {
@@ -95,13 +88,14 @@ import WidgetKit
         if errorMessage == nil { errorMessage = "Konum bulunamadı; Avcılar gösteriliyor. \(message)" }
     }
 
-    private func load(district: String, latitude: Double, longitude: Double) async {
+    private func load(district: String, latitude: Double, longitude: Double, explicitSelection: Bool = false) async {
         loading = true
         errorMessage = nil
         defer { loading = false }
         do {
             let fresh = try await service.fetch(district: district, latitude: latitude, longitude: longitude)
             snapshot = fresh
+            if explicitSelection { SharedSnapshot.defaults.set(true, forKey: SharedSnapshot.selectedKey) }
             SharedSnapshot.save(fresh)
             WidgetCenter.shared.reloadAllTimelines()
         } catch {

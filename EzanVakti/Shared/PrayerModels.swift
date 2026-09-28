@@ -124,10 +124,16 @@ struct PrayerSnapshot: Codable {
 enum SharedSnapshot {
     static let group = "group.com.halilozel.EzanVakti"
     static let key = "prayerSnapshotV1"
+    static let selectedKey = "didChooseLocationV1"
     static var defaults: UserDefaults { UserDefaults(suiteName: group) ?? .standard }
     static func load() -> PrayerSnapshot? {
         guard let data = defaults.data(forKey: key) else { return nil }
-        return try? JSONDecoder().decode(PrayerSnapshot.self, from: data)
+        guard let snapshot = try? JSONDecoder().decode(PrayerSnapshot.self, from: data) else { return nil }
+        if snapshot.district == "Fatih" && !defaults.bool(forKey: selectedKey) {
+            clear()
+            return nil
+        }
+        return snapshot
     }
     static func save(_ snapshot: PrayerSnapshot) {
         guard let data = try? JSONEncoder().encode(snapshot) else { return }

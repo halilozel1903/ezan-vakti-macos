@@ -1,5 +1,8 @@
 import WidgetKit
 import SwiftUI
+import os
+
+private let widgetLog = Logger(subsystem: "com.halilozel.EzanVakti", category: "Widget")
 
 struct PrayerEntry: TimelineEntry {
     let date: Date
@@ -7,8 +10,12 @@ struct PrayerEntry: TimelineEntry {
 }
 
 struct PrayerProvider: TimelineProvider {
-    func placeholder(in context: Context) -> PrayerEntry { PrayerEntry(date: .now, snapshot: nil) }
+    func placeholder(in context: Context) -> PrayerEntry {
+        widgetLog.info("Widget placeholder requested")
+        return PrayerEntry(date: .now, snapshot: nil)
+    }
     func getSnapshot(in context: Context, completion: @escaping (PrayerEntry) -> Void) {
+        widgetLog.info("Widget snapshot requested")
         Task {
             let now = Date()
             let snapshot = context.isPreview ? SharedSnapshot.load() : await resolvedSnapshot(at: now)
@@ -16,6 +23,7 @@ struct PrayerProvider: TimelineProvider {
         }
     }
     func getTimeline(in context: Context, completion: @escaping (Timeline<PrayerEntry>) -> Void) {
+        widgetLog.info("Widget timeline requested")
         Task {
             let now = Date()
             let snapshot = await resolvedSnapshot(at: now)
@@ -27,7 +35,10 @@ struct PrayerProvider: TimelineProvider {
         let cached = SharedSnapshot.load()
         let hasUpcomingDays = cached?.day(for: now) != nil && cached?.day(for: IstanbulClock.nextDay(now)) != nil
         let freshEnough = cached.map { now.timeIntervalSince($0.fetchedAt) < 12 * 60 * 60 } ?? false
-        if hasUpcomingDays && freshEnough { return cached }
+        if hasUpcomingDays && freshEnough {
+            widgetLog.info("Widget using shared schedule")
+            return cached
+        }
         do {
             let updated = try await PrayerService().fetch(
                 district: cached?.district ?? DefaultLocation.district,
@@ -36,8 +47,10 @@ struct PrayerProvider: TimelineProvider {
                 now: now
             )
             SharedSnapshot.save(updated)
+            widgetLog.info("Widget downloaded schedule")
             return updated
         } catch {
+            widgetLog.error("Widget schedule fetch failed: \(error.localizedDescription, privacy: .public)")
             // Keep a usable cached schedule when a refresh is unavailable.
             return hasUpcomingDays ? cached : nil
         }
