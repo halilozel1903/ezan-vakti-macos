@@ -77,8 +77,11 @@ struct EzanWidgetView: View {
     let entry: PrayerEntry
     @Environment(\.widgetFamily) private var family
 
-    private let orange = Color(red: 1, green: 0.48, blue: 0.09)
-    private let muted = Color(red: 0.73, green: 0.75, blue: 0.79)
+    private let orange = Color(red: 1, green: 0.52, blue: 0.17)
+    private let muted = Color(red: 0.64, green: 0.68, blue: 0.75)
+    private let hairline = Color(red: 0.31, green: 0.35, blue: 0.42)
+    private let card = Color(red: 0.18, green: 0.22, blue: 0.29)
+    private let activeCard = Color(red: 0.34, green: 0.25, blue: 0.18)
 
     private var snapshot: PrayerSnapshot? { entry.snapshot }
     private var next: PrayerMoment? { snapshot?.next(after: entry.date) }
@@ -94,84 +97,109 @@ struct EzanWidgetView: View {
                 default: large(snapshot: snapshot, next: next)
                 }
             } else {
-                VStack(alignment: .leading, spacing: 10) {
-                    Image(systemName: "moon.stars.fill").foregroundStyle(orange)
-                    Text("Ezan Vakti").font(.headline)
+                VStack(alignment: .leading, spacing: 8) {
+                    Image(systemName: "moon.stars.fill")
+                        .font(.system(size: 20)).foregroundStyle(orange)
+                    Text("Ezan Vakti").font(.system(size: 18, weight: .bold, design: .rounded))
                     Text("Vakitler yüklenemedi. İnternet bağlantını kontrol et.")
-                        .font(.caption).foregroundStyle(muted)
+                        .font(.system(size: 11)).foregroundStyle(muted)
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
             }
         }
         .foregroundStyle(.white)
         .containerBackground(for: .widget) {
-            LinearGradient(colors: [Color(red: 0.11, green: 0.13, blue: 0.18), Color(red: 0.19, green: 0.21, blue: 0.27)], startPoint: .top, endPoint: .bottom)
+            ZStack {
+                LinearGradient(
+                    colors: [Color(red: 0.09, green: 0.12, blue: 0.17), Color(red: 0.15, green: 0.19, blue: 0.26)],
+                    startPoint: .topLeading, endPoint: .bottomTrailing
+                )
+                RadialGradient(colors: [orange.opacity(0.14), .clear], center: .topTrailing, startRadius: 0, endRadius: 260)
+            }
         }
         .widgetURL(URL(string: "ezanvakti://location"))
     }
 
-    private func header(_ district: String, date: Date, compact: Bool = false) -> some View {
+    private func locationHeader(_ district: String, date: Date, compact: Bool = false) -> some View {
         VStack(alignment: .leading, spacing: 2) {
-            Text(district).font(.system(size: compact ? 17 : 20, weight: .bold, design: .rounded)).lineLimit(1)
+            HStack(spacing: 5) {
+                Image(systemName: "location.fill")
+                    .font(.system(size: compact ? 9 : 10, weight: .semibold))
+                    .foregroundStyle(orange)
+                Text(district)
+                    .font(.system(size: compact ? 15 : 18, weight: .bold, design: .rounded))
+                    .lineLimit(1).minimumScaleFactor(0.7)
+            }
             Text(IstanbulClock.display(date, format: compact ? "d MMMM" : "d MMMM yyyy"))
-                .font(.system(size: compact ? 11 : 12, weight: .medium)).foregroundStyle(muted).lineLimit(1)
+                .font(.system(size: compact ? 9 : 10, weight: .medium))
+                .foregroundStyle(muted).lineLimit(1)
         }
     }
 
-    private func countdown(to next: PrayerMoment) -> some View {
+    private func countdown(to next: PrayerMoment, size: CGFloat) -> some View {
         VStack(alignment: .trailing, spacing: 1) {
             Text("\(next.prayer.title.uppercased()) VAKTİNE")
-                .font(.system(size: 9, weight: .semibold)).foregroundStyle(muted).lineLimit(1)
+                .font(.system(size: 9, weight: .bold, design: .rounded))
+                .tracking(0.5).foregroundStyle(orange).lineLimit(1)
             Text(timerInterval: entry.date...next.date, countsDown: true, showsHours: true)
-                .font(.system(size: 25, weight: .semibold, design: .rounded))
+                .font(.system(size: size, weight: .bold, design: .rounded))
                 .monospacedDigit().lineLimit(1).minimumScaleFactor(0.75)
         }
+        .fixedSize(horizontal: true, vertical: false)
+    }
+
+    private func prayerCell(_ prayer: Prayer, day: PrayerDay) -> some View {
+        VStack(alignment: .leading, spacing: 2) {
+            Text(prayer.title)
+                .font(.system(size: 9, weight: .medium)).foregroundStyle(prayer == current ? orange : muted)
+                .lineLimit(1)
+            Text(day.time(for: prayer))
+                .font(.system(size: 13, weight: .bold, design: .rounded))
+                .monospacedDigit().lineLimit(1)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(.horizontal, 8).padding(.vertical, 3)
+        .background(prayer == current ? activeCard : card, in: RoundedRectangle(cornerRadius: 9))
     }
 
     private func small(snapshot: PrayerSnapshot, next: PrayerMoment) -> some View {
         let displayDate = next.isTomorrow ? next.date : entry.date
         let rows = [snapshot.current(at: entry.date), next].compactMap { $0 }
-        return VStack(alignment: .leading, spacing: 9) {
-            header(snapshot.district, date: displayDate, compact: true)
-            Rectangle().fill(.white.opacity(0.12)).frame(height: 1)
+        return VStack(alignment: .leading, spacing: 5) {
+            locationHeader(snapshot.district, date: displayDate, compact: true)
+            Spacer(minLength: 2)
+            Text("\(next.prayer.title.uppercased()) VAKTİNE")
+                .font(.system(size: 8, weight: .bold, design: .rounded))
+                .tracking(0.5).foregroundStyle(orange).lineLimit(1)
+            Text(timerInterval: entry.date...next.date, countsDown: true, showsHours: true)
+                .font(.system(size: 23, weight: .bold, design: .rounded))
+                .monospacedDigit().lineLimit(1).minimumScaleFactor(0.7)
+            Rectangle().fill(hairline).frame(height: 1)
             ForEach(Array(rows.enumerated()), id: \.offset) { _, moment in
-                HStack(spacing: 7) {
-                    Image(systemName: moment.prayer.symbol).font(.system(size: 12)).frame(width: 15)
-                    Text(moment.prayer.title).font(.system(size: 12, weight: .semibold))
+                HStack(spacing: 5) {
+                    Image(systemName: moment.prayer.symbol).font(.system(size: 9)).frame(width: 11)
+                    Text(moment.prayer.title).font(.system(size: 10, weight: .medium))
                     Spacer(minLength: 0)
                     Text(moment.clock)
-                        .font(.system(size: 12, weight: .bold, design: .rounded)).monospacedDigit()
+                        .font(.system(size: 10, weight: .bold, design: .rounded)).monospacedDigit()
                 }
                 .foregroundStyle(moment.prayer == next.prayer ? orange : .white)
             }
-            Spacer(minLength: 0)
-            HStack {
-                Text("\(next.prayer.title) vaktine").foregroundStyle(muted)
-                Spacer(minLength: 2)
-                Text(timerInterval: entry.date...next.date, countsDown: true, showsHours: true)
-                    .monospacedDigit().foregroundStyle(orange)
-            }
-            .font(.system(size: 10, weight: .semibold)).lineLimit(1)
         }
     }
 
     private func medium(snapshot: PrayerSnapshot, next: PrayerMoment) -> some View {
-        VStack(alignment: .leading, spacing: 12) {
-            HStack(alignment: .top) {
-                header(snapshot.district, date: entry.date)
-                Spacer(minLength: 4)
-                countdown(to: next)
+        VStack(alignment: .leading, spacing: 8) {
+            HStack(alignment: .center, spacing: 8) {
+                locationHeader(snapshot.district, date: entry.date)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                countdown(to: next, size: 23)
             }
-            Rectangle().fill(.white.opacity(0.13)).frame(height: 1)
+            Rectangle().fill(hairline).frame(height: 1)
             if let today {
-                LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 9), count: 3), spacing: 12) {
+                LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 6), count: 3), spacing: 6) {
                     ForEach(Prayer.allCases) { prayer in
-                        VStack(spacing: 4) {
-                            Text(prayer.title).font(.system(size: 11, weight: .medium)).foregroundStyle(muted)
-                            Text(today.time(for: prayer)).font(.system(size: 15, weight: .semibold, design: .rounded)).monospacedDigit()
-                        }
-                        .foregroundStyle(prayer == current ? orange : .white)
-                        .frame(maxWidth: .infinity)
+                        prayerCell(prayer, day: today)
                     }
                 }
             }
@@ -179,30 +207,48 @@ struct EzanWidgetView: View {
     }
 
     private func large(snapshot: PrayerSnapshot, next: PrayerMoment) -> some View {
-        VStack(alignment: .leading, spacing: 13) {
-            HStack(alignment: .top) {
-                header(snapshot.district, date: entry.date)
+        VStack(alignment: .leading, spacing: 9) {
+            locationHeader(snapshot.district, date: entry.date)
+            HStack(spacing: 10) {
+                Image(systemName: next.prayer.symbol)
+                    .font(.system(size: 17))
+                    .foregroundStyle(orange)
+                    .frame(width: 36, height: 36)
+                    .background(activeCard, in: RoundedRectangle(cornerRadius: 10))
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("SIRADAKİ VAKİT")
+                        .font(.system(size: 9, weight: .bold)).tracking(0.5).foregroundStyle(muted)
+                    Text("\(next.prayer.title) · \(next.clock)")
+                        .font(.system(size: 14, weight: .bold, design: .rounded)).lineLimit(1)
+                }
                 Spacer(minLength: 4)
-                countdown(to: next)
+                Text(timerInterval: entry.date...next.date, countsDown: true, showsHours: true)
+                    .font(.system(size: 20, weight: .bold, design: .rounded))
+                    .monospacedDigit().lineLimit(1).minimumScaleFactor(0.75)
             }
-            Rectangle().fill(.white.opacity(0.13)).frame(height: 1)
+            .padding(10)
+            .background(card, in: RoundedRectangle(cornerRadius: 13))
             if let today {
-                ForEach(Prayer.allCases) { prayer in
-                    HStack(spacing: 12) {
-                        Image(systemName: prayer.symbol)
-                            .font(.system(size: 16)).frame(width: 30, height: 30)
-                            .background(.black.opacity(0.25), in: RoundedRectangle(cornerRadius: 7))
-                        Text(prayer.title).font(.system(size: 17, weight: prayer == current ? .bold : .medium))
-                        Spacer()
-                        Text(today.time(for: prayer))
-                            .font(.system(size: 17, weight: prayer == current ? .bold : .regular, design: .rounded))
-                            .monospacedDigit()
+                VStack(spacing: 2) {
+                    ForEach(Prayer.allCases) { prayer in
+                        HStack(spacing: 10) {
+                            Image(systemName: prayer.symbol)
+                                .font(.system(size: 12)).frame(width: 19)
+                                .foregroundStyle(prayer == current ? orange : muted)
+                            Text(prayer.title)
+                                .font(.system(size: 13, weight: prayer == current ? .bold : .medium))
+                            Spacer()
+                            Text(today.time(for: prayer))
+                                .font(.system(size: 14, weight: prayer == current ? .bold : .medium, design: .rounded))
+                                .monospacedDigit()
+                        }
+                        .font(.system(size: 13, weight: prayer == current ? .semibold : .medium))
+                        .padding(.horizontal, 9).frame(height: 27)
+                        .background(prayer == current ? activeCard : .clear, in: RoundedRectangle(cornerRadius: 8))
                     }
-                    .foregroundStyle(prayer == current ? orange : .white)
                 }
             }
             Spacer(minLength: 0)
-            Text("İlçe değiştirmek için dokun").font(.system(size: 10)).foregroundStyle(muted)
         }
     }
 }
