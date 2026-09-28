@@ -14,6 +14,7 @@ targets:
     sources:
       - path: EzanVakti/App
       - path: EzanVakti/Shared
+      - path: EzanVakti/Resources/AppIcon.icns
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.halilozel.EzanVakti

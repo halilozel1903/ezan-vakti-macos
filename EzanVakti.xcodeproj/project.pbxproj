@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		07EB184CCDE158343F212AB8 /* LocationChoiceWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F697EA4B5468C167F608AA /* LocationChoiceWindow.swift */; };
+		2364AE636318AF348C1AC9F4 /* AppIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 7901AF82B3722F23341B5AED /* AppIcon.icns */; };
 		2B71E1E256FBF96086CD0D0E /* PrayerModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D69FE89E459BF91D3C99D23 /* PrayerModels.swift */; };
 		3748F5FB6FE9760A94414DB9 /* PrayerScheduleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45372664A58987939CD1E78C /* PrayerScheduleTests.swift */; };
 		4BF58A4DB88C0D32D1965B4A /* PrayerStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAA4EB8805D5E5727872991 /* PrayerStore.swift */; };
@@ -58,6 +59,7 @@
 		5E0D0E3858E5575339B88937 /* EzanWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = EzanWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		68F9798626B3F48804CF2C49 /* EzanVaktiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EzanVaktiApp.swift; sourceTree = "<group>"; };
 		6FAA4EB8805D5E5727872991 /* PrayerStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerStore.swift; sourceTree = "<group>"; };
+		7901AF82B3722F23341B5AED /* AppIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = AppIcon.icns; sourceTree = "<group>"; };
 		7D69FE89E459BF91D3C99D23 /* PrayerModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerModels.swift; sourceTree = "<group>"; };
 		83F697EA4B5468C167F608AA /* LocationChoiceWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationChoiceWindow.swift; sourceTree = "<group>"; };
 		B1A206A3AEBFBD8C293C2651 /* EzanWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EzanWidget.swift; sourceTree = "<group>"; };
@@ -66,6 +68,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
+		0C2742BD766DD38C9E1D9908 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7901AF82B3722F23341B5AED /* AppIcon.icns */,
+			);
+			name = Resources;
+			path = EzanVakti/Resources;
+			sourceTree = "<group>";
+		};
 		125E855850150205B74140D0 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				4936CD17E9157D477C2A5BBC /* App */,
+				0C2742BD766DD38C9E1D9908 /* Resources */,
 				8CA6DE341F605AD1F2C4EACF /* Shared */,
 				125E855850150205B74140D0 /* Tests */,
 				BB2405CC49EFD4FC9BA2FCED /* Widget */,
@@ -135,6 +147,7 @@
 			buildConfigurationList = 39F9857B20558D09F6C856C4 /* Build configuration list for PBXNativeTarget "EzanVakti" */;
 			buildPhases = (
 				2E5D70D8C55EBDD26A35B3D2 /* Sources */,
+				FC8B04E8F6614AD0E967585C /* Resources */,
 				27EAD3FC3BAFDD42AE6ABE3F /* Embed Foundation Extensions */,
 			);
 			buildRules = (
@@ -227,6 +240,17 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FC8B04E8F6614AD0E967585C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2364AE636318AF348C1AC9F4 /* AppIcon.icns in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		29678BFE999481917251E162 /* Sources */ = {
